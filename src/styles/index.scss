@@ -1,0 +1,41 @@
+html {
+    background-color: #fff;
+    font-size: 16px;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    min-width: 300px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+}
+
+body {
+    margin: 0;
+}
+
+input {
+    font-family: Nunito-Bold;
+}
+
+.text {
+    transition: 1s;
+}
+
+h1 {
+    transition: 1s;
+}
+
+p {
+    transition: 1s;
+}
+
+button {
+    transition: 1s;
+}
