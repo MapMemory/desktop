@@ -1,35 +1,38 @@
 {
   "name": "mapmemory",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
+  "description": "The goal of the project: to develop an open source information system of tourist objects 'MapMemory', which is aimed at providing the user with the necessary information about tourist objects on the map, as well as at simple manipulation with objects.",
+  "author": "Artur Shkadzinski <shkadinskiy98@gmail.com>",
   "dependencies": {
-    "@testing-library/jest-dom": "^5.11.10",
-    "@testing-library/react": "^11.2.6",
-    "@testing-library/user-event": "^12.8.3",
-    "axios": "^0.21.1",
-    "jquery": "^3.6.0",
-    "leaflet": "^1.7.1",
-    "leaflet-control-geocoder": "^2.3.0",
-    "leaflet-routing-machine": "^3.2.12",
-    "lrm-google": "^1.0.1",
-    "public-ip": "^4.0.4",
-    "qrcode": "^1.4.4",
-    "react": "^16.0.0",
-    "react-addons-update": "^15.6.3",
-    "react-dom": "^16.0.0",
-    "react-id-swiper": "^4.0.0",
-    "react-leaflet": "^2.0.0",
+    "@testing-library/jest-dom": "5.14.1",
+    "@testing-library/react": "11.2.7",
+    "@testing-library/user-event": "13.1.9",
+    "axios": "0.21.1",
+    "electron-icon-builder": "2.0.1",
+    "electron-is-dev": "2.0.0",
+    "jquery": "3.6.0",
+    "leaflet": "1.7.1",
+    "leaflet-control-geocoder": "2.3.0",
+    "leaflet-routing-machine": "3.2.12",
+    "lrm-google": "1.0.1",
+    "public-ip": "4.0.4",
+    "qrcode": "1.4.4",
+    "react": "17.0.2",
+    "react-addons-update": "15.6.3",
+    "react-dom": "17.0.2",
+    "react-id-swiper": "4.0.0",
+    "react-leaflet": "2.8.0",
     "react-leaflet-control": "2.1.2",
-    "react-rating-stars-component": "^2.2.0",
-    "react-router-dom": "^5.2.0",
+    "react-rating-stars-component": "2.2.0",
+    "react-router-dom": "5.2.0",
     "react-scripts": "4.0.3",
-    "sass": "^1.32.12",
-    "swiper": "^6.6.2",
-    "tinyurl": "^1.1.7",
-    "typescript": "^4.3.2",
-    "universal-cookie": "^4.0.4",
-    "web-vitals": "^1.1.1",
-    "electron-is-dev": "^2.0.0"
+    "sass": "1.35.1",
+    "swiper": "6.7.0",
+    "tinyurl": "1.1.7",
+    "typescript": "4.3.4",
+    "universal-cookie": "4.0.4",
+    "web-vitals": "2.0.1"
   },
   "homepage": "./",
   "main": "public/electron.js",
@@ -38,9 +41,57 @@
     "estart": "electron .",
     "build": "react-scripts build",
     "ebuild": "react-scripts build && electron-builder -mwl",
-    "elbuild": "react-scripts build && electron-builder -l",
+    "elbuild": "./node_modules/.bin/electron-icon-builder --input=./public/logo512.png --output=./public && react-scripts build && electron-builder -l",
     "ewbuild": "react-scripts build && electron-builder -w",
     "embuild": "react-scripts build && electron-builder -m"
+  },
+  "build": {
+    "appId": "org.mapmemory.mapmemory-electron",
+    "copyright": "©2021 MapMemory, Inc.",
+    "asar": true,
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "mac": {
+      "category": "public.app-category.productivity",
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "linux": {
+      "category": "GNOME;GTK;Network;InstantMessaging",
+      "description": "The goal of the project: to develop an open source information system of tourist objects 'MapMemory', which is aimed at providing the user with the necessary information about tourist objects on the map, as well as at simple manipulation with objects.",
+      "packageCategory": "GNOME;GTK;Network;InstantMessaging",
+      "target": [
+        "appimage"
+      ],
+      "maintainer": "Artur Shkadzinski <shkadinskiy98@gmail.com>",
+      "artifactName": "${productName}-${version}-${arch}.${ext}"
+    },
+    "deb": {
+      "synopsis": "MapMemory Desktop App"
+    },
+    "snap": {
+      "synopsis": "MapMemory Desktop App"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis-web",
+          "arch": [
+            "x64",
+            "ia32"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico",
+      "artifactName": "${productName}-Web-Setup-${version}.${ext}",
+      "publisherName": "MapMemory, Inc."
+    },
+    "nsis": {
+      "allowToChangeInstallationDirectory": true,
+      "oneClick": false,
+      "perMachine": false
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -61,7 +112,7 @@
     ]
   },
   "devDependencies": {
-    "electron": "^13.0.1",
-    "electron-builder": "^22.10.5"
+    "electron": "13.1.2",
+    "electron-builder": "22.10.5"
   }
 }
