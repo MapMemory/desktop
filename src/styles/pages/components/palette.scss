@@ -21,7 +21,8 @@
     height: 100%;
     width: 50%;
     float: left;
-    border: 1px solid #000000;
+    border: 2px solid #000000;
+    margin: -1px;
 }
 
 #themes > #blockScroll > #body > .palette > .block > .front {
@@ -89,7 +90,8 @@
         height: 16vh;
         float: left;
         height: inherit;
-        border: 1px solid #000000;
+        border: 1.5px solid #000000;
+        margin: -1px;
     }
 
     #themes > #blockScroll > #body > .palette > .block > .front {
