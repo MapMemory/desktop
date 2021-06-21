@@ -1,4 +1,3 @@
-import Cookies from 'universal-cookie';
 import Information from './helpers/information.jsx';
 import Light from './themes/light.jsx';
 import Dark from './themes/dark.jsx';
@@ -6,23 +5,42 @@ import Dark from './themes/dark.jsx';
 
 export default class {
     constructor() {
-        this.cookies = new Cookies();
         this.information = new Information();
         this.light = new Light();
         this.dark = new Dark();
+        let storage = window.localStorage;
 
-        this.tone = this.cookies.get('tone');
-        this.color = this.cookies.get('color');
+        this.tone = storage.getItem("tone");
+        this.color = storage.getItem("color");
+
+        this.getThemeFromCookie();
+    }
+
+    async getThemeFromCookie() {
+        let storage = window.localStorage;
+
+        this.tone = storage.getItem("tone");
+        this.color = storage.getItem("color");
 
         if (this.tone === undefined) {
             this.tone = 'light';
-            this.cookies.set('tone', 'light', { path: '/' });
+            storage.setItem('tone', 'light');
         }
 
         if (this.color === undefined) {
             this.color = 'green';
-            this.cookies.set('color', 'green', { path: '/' });
+            storage.setItem('color', 'green');
         }
+    }
+
+    setTheme(tone, color) {
+        let storage = window.localStorage;
+
+        this.tone = tone;
+        this.color = color;
+
+        storage.setItem('tone', tone);
+        storage.setItem('color', color);
     }
 
     getThemeTone() {

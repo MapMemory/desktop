@@ -2,9 +2,11 @@ import '../../styles/pages/components/footer.scss'
 import { useHistory } from "react-router-dom";
 
 import Person from '../../utils/person.jsx';
+import Electron from '../../utils/electron.js';
 
 export default () => {
     let person = new Person();
+    let electron = new Electron();
     const history = useHistory();
 
     return (
@@ -36,14 +38,16 @@ export default () => {
                     <div className="column">
                         <strong style={person.getThemeColors().text}>Социальное</strong>
                         <ul>
-                            <li onClick={() => { window.location.assign("https://twitter.com/MapMemoryLink") }} style={person.getThemeColors().text}>Twitter</li>
-                            <li onClick={() => { window.location.assign("https://github.com/MapMemory") }} style={person.getThemeColors().text}>GitHub</li>
+                            <li onClick={() => { electron.createWindowTwitter() }} style={person.getThemeColors().text}>Twitter</li>
+                            <li onClick={() => { electron.createWindowGitHub() }} style={person.getThemeColors().text}>GitHub</li>
                         </ul>
                     </div>
                     <div className="column">
                         <strong style={person.getThemeColors().text}>Помощь</strong>
                         <ul>
-                            <li onClick={() => window.open('mailto:test@example.com?subject=subject&body=body')} style={person.getThemeColors().text}>Служба поддержки</li>
+                            <li onClick={() =>
+                                electron.createWindowMailto("mapmemory@protonmail.com", "Кратко о проблеме", "Подробнее о проблеме")
+                            } style={person.getThemeColors().text}>Служба поддержки</li>
                         </ul>
                     </div>
                 </div>

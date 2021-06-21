@@ -127,11 +127,7 @@ function Body() {
                                 }
                             }
                             catch (error) {
-                                if (error.toJSON().message === 'Network Error') {
-                                    alert('Отсутствует подлючение к серверу')
-                                    document.getElementById('login').style.borderColor = 'Red';
-                                    document.getElementById('password').style.borderColor = 'Red';
-                                }
+                                this.stateMessages.network_error(error.toJSON().message);
                             }
                         }
                         }>Войти</button>

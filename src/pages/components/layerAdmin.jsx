@@ -285,22 +285,16 @@ export default class extends React.Component {
     }
 
     handleGoToMe = async () => {
-        this.setState(update(this.state, {
-            isYourLocation: {
-                $set: true
-            },
-            focusLocation: await new Promise((resolve) => {
-                navigator.geolocation.getCurrentPosition((position) =>
-                    resolve({
-                        lat: {
-                            $set: position.coords.latitude
-                        },
-                        lng: {
-                            $set: position.coords.longitude
-                        }
-                    }));
-            })
-        }));
+        let person = new Person();
+        let currentPosition = await person.information.getGEO();
+
+        this.setState({
+            isYourLocation: true,
+            focusLocation: {
+                lat: currentPosition.lat,
+                lng: currentPosition.long
+            }
+        });
     }
 
     handleClearSearch = async () => {
@@ -514,7 +508,7 @@ export default class extends React.Component {
         points.push({
             idx: "MarkerN" + points.length,
             lat: e.latlng.lat,
-            long: e.latlng.lng,
+            lng: e.latlng.lng,
             type: 'empty',
             isDeleted: false
         })

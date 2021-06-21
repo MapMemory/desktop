@@ -25,6 +25,7 @@ import Person from '../../utils/person.jsx';
 import SimpleSlider from './simpleSlider.jsx';
 import ShowQRCode from '../../utils/helpers/showQRCode.jsx';
 import CONSTANTS from '../../utils/constants.jsx';
+import Electron from '../../utils/electron.js';
 
 export default class extends React.Component {
     constructor({ monuments, tables, streets, aimObject, userLocation, focus, allObjects }) {
@@ -130,6 +131,8 @@ export default class extends React.Component {
     }
 
     ObjectShare({ state, person, object, shortenURL }) {
+        let electron = new Electron();
+
         return (
             <div id="boxShare">
                 <div id="boxText">
@@ -137,7 +140,7 @@ export default class extends React.Component {
                         <canvas id="qrCode"></canvas>
                     </div> : <div />}
                     <ImgSendMail id="email" fill={person.getThemeColors().svg.fill} alt="Поделиться" onClick={() => {
-                        window.open(`mailto:Введите почту?subject=Тема&body=Это письмо было отправлено из MapMemory. Приглашаем вас виртуально посетить объект "${(object.name) ? object.name : object.new_name}". Для этого перейдите по ссылке: ${shortenURL}`);
+                        electron.createWindowMailto("Введите почту", "Тема", `Это письмо было отправлено из MapMemory. Приглашаем вас виртуально посетить объект "${(object.name) ? object.name : object.new_name}". Для этого перейдите по ссылке: ${shortenURL}`);
                     }} />
                 </div>
             </div>
@@ -297,6 +300,7 @@ export default class extends React.Component {
 
     handleSearch = async () => {
         let server = new Server();
+        let person = new Person();
 
         if (document.getElementById('inputSearch').value === '') {
             this.setState({
@@ -316,13 +320,7 @@ export default class extends React.Component {
             this.setState({
                 focus: 'i',
                 objects: await server.getObjects(''),
-                userLocation: await new Promise((resolve) => {
-                    navigator.geolocation.getCurrentPosition((position) =>
-                        resolve({
-                            lat: position.coords.latitude,
-                            long: position.coords.longitude
-                        }));
-                })
+                userLocation: await person.information.getGEO()
             });
         }
 
@@ -377,18 +375,13 @@ export default class extends React.Component {
 
     handleRoute = async () => {
         let server = new Server();
+        let person = new Person();
 
         if (document.getElementById('inpRouteFrom').value === 'Мое местоположение') {
             this.setState({
                 objects: await server.getObjects(''),
                 route: {
-                    startPoint: await new Promise((resolve) => {
-                        navigator.geolocation.getCurrentPosition((position) =>
-                            resolve({
-                                lat: position.coords.latitude,
-                                long: position.coords.longitude
-                            }));
-                    }),
+                    startPoint: await person.information.getGEO(),
                     endPoint: await server.getPoint(document.getElementById('inpRouteTo').value)
                 }
             });
@@ -399,13 +392,7 @@ export default class extends React.Component {
                 objects: await server.getObjects(''),
                 route: {
                     startPoint: await server.getPoint(document.getElementById('inpRouteFrom').value),
-                    endPoint: await new Promise((resolve) => {
-                        navigator.geolocation.getCurrentPosition((position) =>
-                            resolve({
-                                lat: position.coords.latitude,
-                                long: position.coords.longitude
-                            }));
-                    })
+                    endPoint: await person.information.getGEO()
                 }
             });
         }
@@ -424,19 +411,14 @@ export default class extends React.Component {
 
     handleGoToMe = async () => {
         let server = new Server();
+        let person = new Person();
 
         this.setState({
             focus: 'i',
             objects: await server.getObjects(''),
-            userLocation: await new Promise((resolve) => {
-                navigator.geolocation.getCurrentPosition((position) =>
-                    resolve({
-                        lat: position.coords.latitude,
-                        long: position.coords.longitude
-                    }));
-            })
-        });
-    }
+            userLocation: await person.information.getGEO()
+        })
+    };
 
     saveMap = map => {
         this.map = map;

@@ -13,6 +13,9 @@ const PAGES = {
     },
     ADMIN: {
         GET_IS_AUTH: 'admin/getIsAuth.php'
+    },
+    ROOT: {
+        GET_IS_HERE: 'root/ping.php'
     }
 };
 

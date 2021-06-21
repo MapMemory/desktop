@@ -16,6 +16,7 @@ import Server from '../utils/server.jsx';
 
 async function showLayerUser(aim) {
     let server = new Server();
+    let person = new Person();
     let objects = await server.getObjects('');
     let aimObject = null;
     let focus = "objects";
@@ -25,13 +26,7 @@ async function showLayerUser(aim) {
         focus = "aim";
     }
 
-    let userLocation = await new Promise((resolve) => {
-        navigator.geolocation.getCurrentPosition((position) =>
-            resolve({
-                lat: position.coords.latitude,
-                long: position.coords.longitude
-            }));
-    });
+    let userLocation = await person.information.getGEO();
 
     await ReactDOM.render(
         <div id="mapBox">
@@ -45,6 +40,7 @@ async function showLayerUser(aim) {
                 allObjects={objects} />
         </div>
         , document.getElementById('body'));
+
 }
 
 export default () => {

@@ -2,7 +2,7 @@ import './styles/fonts.scss';
 import './styles/index.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 
 import Preview from './pages/preview.jsx'
 import Map from './pages/map.jsx'
@@ -12,18 +12,15 @@ import Privacy from './pages/privacy.jsx'
 import Themes from './pages/themes.jsx'
 import Admin from './pages/admin.jsx'
 
-import ScrollToTop from './utils/helpers/ScrollToTop.jsx'
-
 ReactDOM.render(
-  <BrowserRouter>
-    <ScrollToTop />
-    <Route exact path="/" component={Preview} />
+  <HashRouter>
+    <Route path="/" exact component={Preview} />
     <Route path="/map" component={Map} />
     <Route path="/about" component={About} />
     <Route path="/download" component={Download} />
     <Route path="/privacy" component={Privacy} />
     <Route path="/themes" component={Themes} />
     <Route path="/admin" component={Admin} />
-  </BrowserRouter>,
+  </HashRouter>,
   document.getElementById('root')
 );

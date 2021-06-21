@@ -1,15 +1,15 @@
 import { useHistory } from "react-router-dom";
-import Cookies from 'universal-cookie';
 
 import '../../styles/pages/components/palette.scss';
 import Light from '../../utils/themes/light.jsx';
 import Dark from '../../utils/themes/dark.jsx';
+import Person from '../../utils/person.jsx';
 
 export default ({ left, right, title, tone, color, theme }) => {
-    const cookies = new Cookies();
     const light = new Light();
     const dark = new Dark();
     const history = useHistory();
+    const person = new Person();
 
     if (tone === "light") {
         if (color === "green") {
@@ -21,8 +21,7 @@ export default ({ left, right, title, tone, color, theme }) => {
                                 <div style={theme.text} className="text general">{title}</div>
                                 <div id="boxBtn">
                                     <button style={{ backgroundColor: theme.headerColorPrimary.backgroundColor, color: theme.text.color }} onClick={() => {
-                                        cookies.set('tone', 'light', { path: '/' });
-                                        cookies.set('color', 'green', { path: '/' });
+                                        person.setTheme('light', 'green');
                                         history.push("/");
                                     }}>Выбрать</button>
                                 </div>
@@ -43,8 +42,7 @@ export default ({ left, right, title, tone, color, theme }) => {
                                 <div style={theme.text} className="text general">{title}</div>
                                 <div id="boxBtn">
                                     <button style={{ backgroundColor: theme.headerColorPrimary.backgroundColor, color: theme.text.color }} onClick={() => {
-                                        cookies.set('tone', 'light', { path: '/' });
-                                        cookies.set('color', 'green', { path: '/' });
+                                        person.setTheme('light', 'green');
                                         history.push("/");
                                     }}>Выбрать</button>
                                 </div>
@@ -66,8 +64,7 @@ export default ({ left, right, title, tone, color, theme }) => {
                                 <div style={theme.text} className="text general">{title}</div>
                                 <div id="boxBtn">
                                     <button style={{ backgroundColor: theme.headerColorPrimary.backgroundColor, color: theme.text.color }} onClick={() => {
-                                        cookies.set('tone', 'light', { path: '/' });
-                                        cookies.set('color', 'orange', { path: '/' });
+                                        person.setTheme('light', 'orange');
                                         history.push("/");
                                     }}>Выбрать</button>
                                 </div>
@@ -88,8 +85,7 @@ export default ({ left, right, title, tone, color, theme }) => {
                                 <div style={theme.text} className="text general">{title}</div>
                                 <div id="boxBtn">
                                     <button style={{ backgroundColor: theme.headerColorPrimary.backgroundColor, color: theme.text.color }} onClick={() => {
-                                        cookies.set('tone', 'light', { path: '/' });
-                                        cookies.set('color', 'orange', { path: '/' });
+                                        person.setTheme('light', 'orange');
                                         history.push("/");
                                     }}>Выбрать</button>
                                 </div>
@@ -111,8 +107,7 @@ export default ({ left, right, title, tone, color, theme }) => {
                                 <div style={theme.text} className="text general">{title}</div>
                                 <div id="boxBtn">
                                     <button style={{ backgroundColor: theme.headerColorPrimary.backgroundColor, color: theme.text.color }} onClick={() => {
-                                        cookies.set('tone', 'light', { path: '/' });
-                                        cookies.set('color', 'red', { path: '/' });
+                                        person.setTheme('light', 'red');
                                         history.push("/");
                                     }}>Выбрать</button>
                                 </div>
@@ -133,8 +128,7 @@ export default ({ left, right, title, tone, color, theme }) => {
                                 <div style={theme.text} className="text general">{title}</div>
                                 <div id="boxBtn">
                                     <button style={{ backgroundColor: theme.headerColorPrimary.backgroundColor, color: theme.text.color }} onClick={() => {
-                                        cookies.set('tone', 'light', { path: '/' });
-                                        cookies.set('color', 'red', { path: '/' });
+                                        person.setTheme('light', 'red');
                                         history.push("/");
                                     }}>Выбрать</button>
                                 </div>
@@ -159,8 +153,7 @@ export default ({ left, right, title, tone, color, theme }) => {
                                 <div style={theme.text} className="text general">{title}</div>
                                 <div id="boxBtn">
                                     <button style={{ backgroundColor: theme.headerColorPrimary.backgroundColor, color: theme.text.color }} onClick={() => {
-                                        cookies.set('tone', 'dark', { path: '/' });
-                                        cookies.set('color', 'green', { path: '/' });
+                                        person.setTheme('dark', 'green');
                                         history.push("/");
                                     }}>Выбрать</button>
                                 </div>
@@ -181,8 +174,7 @@ export default ({ left, right, title, tone, color, theme }) => {
                                 <div style={theme.text} className="text general">{title}</div>
                                 <div id="boxBtn">
                                     <button style={{ backgroundColor: theme.headerColorPrimary.backgroundColor, color: theme.text.color }} onClick={() => {
-                                        cookies.set('tone', 'dark', { path: '/' });
-                                        cookies.set('color', 'green', { path: '/' });
+                                        person.setTheme('dark', 'green');
                                         history.push("/");
                                     }}>Выбрать</button>
                                 </div>
@@ -204,8 +196,7 @@ export default ({ left, right, title, tone, color, theme }) => {
                                 <div style={theme.text} className="text general">{title}</div>
                                 <div id="boxBtn">
                                     <button style={{ backgroundColor: theme.headerColorPrimary.backgroundColor, color: theme.text.color }} onClick={() => {
-                                        cookies.set('tone', 'dark', { path: '/' });
-                                        cookies.set('color', 'orange', { path: '/' });
+                                        person.setTheme('dark', 'orange');
                                         history.push("/");
                                     }}>Выбрать</button>
                                 </div>
@@ -226,8 +217,7 @@ export default ({ left, right, title, tone, color, theme }) => {
                                 <div style={theme.text} className="text general">{title}</div>
                                 <div id="boxBtn">
                                     <button style={{ backgroundColor: theme.headerColorPrimary.backgroundColor, color: theme.text.color }} onClick={() => {
-                                        cookies.set('tone', 'dark', { path: '/' });
-                                        cookies.set('color', 'orange', { path: '/' });
+                                        person.setTheme('dark', 'orange');
                                         history.push("/");
                                     }}>Выбрать</button>
                                 </div>
@@ -249,8 +239,7 @@ export default ({ left, right, title, tone, color, theme }) => {
                                 <div style={theme.text} className="text general">{title}</div>
                                 <div id="boxBtn">
                                     <button style={{ backgroundColor: theme.headerColorPrimary.backgroundColor, color: theme.text.color }} onClick={() => {
-                                        cookies.set('tone', 'dark', { path: '/' });
-                                        cookies.set('color', 'red', { path: '/' });
+                                        person.setTheme('dark', 'red');
                                         history.push("/");
                                     }}>Выбрать</button>
                                 </div>
@@ -271,8 +260,7 @@ export default ({ left, right, title, tone, color, theme }) => {
                                 <div style={theme.text} className="text general">{title}</div>
                                 <div id="boxBtn">
                                     <button style={{ backgroundColor: theme.headerColorPrimary.backgroundColor, color: theme.text.color }} onClick={() => {
-                                        cookies.set('tone', 'dark', { path: '/' });
-                                        cookies.set('color', 'red', { path: '/' });
+                                        person.setTheme('dark', 'red');
                                         history.push("/");
                                     }}>Выбрать</button>
                                 </div>

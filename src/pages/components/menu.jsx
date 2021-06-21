@@ -10,9 +10,11 @@ import { ReactComponent as ImgSupport } from '../../assets/images/svg/support.sv
 import { useHistory } from "react-router-dom";
 
 import Person from '../../utils/person.jsx';
+import Electron from '../../utils/electron.js';
 
 export default () => {
     let person = new Person();
+    let electron = new Electron();
     const history = useHistory();
 
     return (
@@ -106,7 +108,9 @@ export default () => {
 
                 <div className="block" >
                     <div className="front">
-                        <button style={{ borderColor: person.getThemeColors().text.color, backgroundColor: person.getThemeColors().headerColorPrimary.backgroundColor, color: person.getThemeColors().text.color }} onClick={() => { window.open('mailto:mapmemory@protonmail.com?subject=Кратко о проблеме&body=Подробнее о проблеме'); }}>
+                        <button style={{ borderColor: person.getThemeColors().text.color, backgroundColor: person.getThemeColors().headerColorPrimary.backgroundColor, color: person.getThemeColors().text.color }} onClick={() => {
+                            electron.createWindowMailto("mapmemory@protonmail.com", "Кратко о проблеме", "Подробнее о проблеме");
+                        }}>
                             <ImgSupport fill={person.getThemeColors().text.color} className="svg" />
                         </button>
                     </div>

@@ -12,6 +12,7 @@ import { ReactComponent as imgWindows } from '../assets/images/svg/windows.svg';
 
 import Person from '../utils/person.jsx';
 import Menu from './components/menu.jsx';
+import Electron from '../utils/electron.js';
 
 function Body() {
     let person = new Person();
@@ -28,14 +29,20 @@ function Body() {
                 <Device
                     title="Android"
                     ImgObj={imgAndroid}
-                    url="https://github.com/MapMemory/android"
+                    openWindow={() => {
+                        let electron = new Electron();
+                        electron.createWindowDownloadAndroid();
+                    }}
                     right={true}
                     theme={person.getThemeColors()}
                 />
                 <Device
                     title="IOS"
                     ImgObj={imgApple}
-                    url="https://github.com/MapMemory/ios"
+                    openWindow={() => {
+                        let electron = new Electron();
+                        electron.createWindowDownloadIOS();
+                    }}
                     left={true}
                     theme={person.getThemeColors()}
                 />
@@ -50,21 +57,30 @@ function Body() {
                 <Device
                     title="Linux"
                     ImgObj={imgLinux}
-                    url="https://github.com/MapMemory/desktop"
+                    openWindow={() => {
+                        let electron = new Electron();
+                        electron.createWindowDownloadDesktop();
+                    }}
                     right={true}
                     theme={person.getThemeColors()}
                 />
                 <Device
                     title="Windows"
                     ImgObj={imgWindows}
-                    url="https://github.com/MapMemory/desktop"
+                    openWindow={() => {
+                        let electron = new Electron();
+                        electron.createWindowDownloadDesktop();
+                    }}
                     left={true}
                     theme={person.getThemeColors()}
                 />
                 <Device
                     title="MacOS"
                     ImgObj={imgApple}
-                    url="https://github.com/MapMemory/desktop"
+                    openWindow={() => {
+                        let electron = new Electron();
+                        electron.createWindowDownloadDesktop();
+                    }}
                     right={true}
                     theme={person.getThemeColors()}
                 />
