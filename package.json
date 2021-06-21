@@ -62,7 +62,11 @@
       "description": "The goal of the project: to develop an open source information system of tourist objects 'MapMemory', which is aimed at providing the user with the necessary information about tourist objects on the map, as well as at simple manipulation with objects.",
       "packageCategory": "GNOME;GTK;Network;InstantMessaging",
       "target": [
-        "appimage"
+        "deb",
+        "tar.gz",
+        "appimage",
+        "rpm",
+        "snap"
       ],
       "maintainer": "Artur Shkadzinski <shkadinskiy98@gmail.com>",
       "artifactName": "${productName}-${version}-${arch}.${ext}"
