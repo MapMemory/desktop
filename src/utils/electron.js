@@ -1,7 +1,3 @@
-import axios from 'axios';
-import CONSTANTS from '../utils/constants.jsx';
-import StateMessages from '../utils/stateMessages.js';
-
 export default class {
     createWindowMailto(mailto, subject, body) {
         const electron = window.require('electron');
@@ -25,8 +21,7 @@ export default class {
             autoHideMenuBar: true,
             parent: remote.getCurrentWindow(),
             modal: true,
-            show: false,
-            icon: path.join(__dirname, '../public/icon.png')
+            show: false
         });
 
         windowGitHub.setMenu(null);
@@ -73,8 +68,7 @@ export default class {
             fullscreen: false,
             autoHideMenuBar: true,
             parent: remote.getCurrentWindow(),
-            modal: true,
-            icon: path.join(__dirname, '../public/icon.png')
+            modal: true
         });
 
         windowGitHub.setMenu(null);
@@ -121,8 +115,7 @@ export default class {
             fullscreen: false,
             autoHideMenuBar: true,
             parent: remote.getCurrentWindow(),
-            modal: true,
-            icon: path.join(__dirname, '../public/icon.png')
+            modal: true
         });
 
         windowTwitter.setMenu(null);
@@ -169,8 +162,7 @@ export default class {
             fullscreen: false,
             autoHideMenuBar: true,
             parent: remote.getCurrentWindow(),
-            modal: true,
-            icon: path.join(__dirname, '../public/icon.png')
+            modal: true
         });
 
         windowDownloadAndroid.setMenu(null);
@@ -217,8 +209,7 @@ export default class {
             fullscreen: false,
             autoHideMenuBar: true,
             parent: remote.getCurrentWindow(),
-            modal: true,
-            icon: path.join(__dirname, '../public/icon.png')
+            modal: true
         });
 
         windowDownloadIOS.setMenu(null);
@@ -265,8 +256,7 @@ export default class {
             fullscreen: false,
             autoHideMenuBar: true,
             parent: remote.getCurrentWindow(),
-            modal: true,
-            icon: path.join(__dirname, '../public/icon.png')
+            modal: true
         });
 
         windowDownloadDesktop.setMenu(null);

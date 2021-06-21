@@ -21,7 +21,7 @@ function createWindow() {
     fullscreen: false,
     autoHideMenuBar: true
   })
-  // mainWindow.setMenu(null);
+  mainWindow.setMenu(null);
 
   const startURL = isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`;
 
