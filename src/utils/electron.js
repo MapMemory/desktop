@@ -1,7 +1,6 @@
 export default class {
     createWindowMailto(mailto, subject, body) {
         const electron = window.require('electron');
-        const path = window.require('path')
         const remote = electron.remote
         const { BrowserWindow, globalShortcut } = remote
 
@@ -49,7 +48,6 @@ export default class {
 
     createWindowGitHub() {
         const electron = window.require('electron');
-        const path = window.require('path')
         const remote = electron.remote
         const { BrowserWindow, globalShortcut } = remote
 
@@ -96,7 +94,6 @@ export default class {
 
     createWindowTwitter() {
         const electron = window.require('electron');
-        const path = window.require('path')
         const remote = electron.remote
         const { BrowserWindow, globalShortcut } = remote
 
@@ -143,7 +140,6 @@ export default class {
 
     createWindowDownloadAndroid() {
         const electron = window.require('electron');
-        const path = window.require('path')
         const remote = electron.remote
         const { BrowserWindow, globalShortcut } = remote
 
@@ -190,7 +186,6 @@ export default class {
 
     createWindowDownloadIOS() {
         const electron = window.require('electron');
-        const path = window.require('path')
         const remote = electron.remote
         const { BrowserWindow, globalShortcut } = remote
 
@@ -237,7 +232,6 @@ export default class {
 
     createWindowDownloadDesktop() {
         const electron = window.require('electron');
-        const path = window.require('path')
         const remote = electron.remote
         const { BrowserWindow, globalShortcut } = remote
 
