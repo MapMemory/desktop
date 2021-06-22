@@ -8,15 +8,7 @@ export default class {
         this.information = new Information();
         this.light = new Light();
         this.dark = new Dark();
-        let storage = window.localStorage;
 
-        this.tone = storage.getItem("tone");
-        this.color = storage.getItem("color");
-
-        this.getThemeFromCookie();
-    }
-
-    async getThemeFromCookie() {
         let storage = window.localStorage;
 
         this.tone = storage.getItem("tone");
