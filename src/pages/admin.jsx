@@ -14,6 +14,7 @@ import LayerAdmin from './components/layerAdmin.jsx';
 
 import Person from '../utils/person.jsx';
 import Server from '../utils/server.jsx';
+import StateMessages from '../utils/stateMessages.js';
 
 function Body() {
     let person = new Person();
@@ -127,7 +128,8 @@ function Body() {
                                 }
                             }
                             catch (error) {
-                                this.stateMessages.network_error(error.toJSON().message);
+                                let stateMessages = new StateMessages();
+                                stateMessages.network_error(error.toJSON().message);
                             }
                         }
                         }>Войти</button>
