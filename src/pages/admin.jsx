@@ -49,8 +49,6 @@ function Body() {
 
                                     let objects = await server.getObjects('');
 
-                                    console.log(objects);
-
                                     let markers = []
 
                                     objects.monuments.map((monument) => markers.push({
@@ -82,6 +80,7 @@ function Body() {
                                         lat: monument.lat,
                                         long: monument.long,
                                         images: '',
+                                        rating: monument.rating,
                                         isDeleted: false
                                     }));
 
@@ -95,6 +94,7 @@ function Body() {
                                         lat: table.lat,
                                         long: table.long,
                                         images: '',
+                                        rating: table.rating,
                                         isDeleted: false
                                     }));
 
@@ -111,6 +111,7 @@ function Body() {
                                         end_lat: street.end_lat,
                                         end_long: street.end_long,
                                         images: '',
+                                        rating: street.rating,
                                         isDeleted: false
                                     }));
 
