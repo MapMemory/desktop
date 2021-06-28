@@ -40,7 +40,7 @@ export default class {
             ratings: []
         };
 
-        uncooked_points.forEach(async (point) => {
+        for (const point of uncooked_points) {
             if (!point.isDeleted) {
                 if (point.type === 'monument')
                     points.monuments.push({
@@ -49,6 +49,15 @@ export default class {
                         direction: point.direction,
                         lat: point.lat,
                         long: point.long,
+                        images: await Promise.all(point.images.map(async (image) => (image.includes('blob')) ? (await new Promise(async (resolve) => await fetch(image).then((result) => result.blob().then((result) => {
+                            var reader = new FileReader();
+                            reader.onload = function () {
+                                var dataUrl = reader.result;
+                                var base64 = dataUrl.split(',')[1];
+                                resolve(base64);
+                            };
+                            reader.readAsDataURL(result);
+                        })))) : (image))),
                         ratingArray: await this.getRatingArray(1, (point.id) ? point.id : -1)
                     });
 
@@ -59,6 +68,15 @@ export default class {
                         direction: point.direction,
                         lat: point.lat,
                         long: point.long,
+                        images: await Promise.all(point.images.map(async (image) => (image.includes('blob')) ? (await new Promise(async (resolve) => await fetch(image).then((result) => result.blob().then((result) => {
+                            var reader = new FileReader();
+                            reader.onload = function () {
+                                var dataUrl = reader.result;
+                                var base64 = dataUrl.split(',')[1];
+                                resolve(base64);
+                            };
+                            reader.readAsDataURL(result);
+                        })))) : (image))),
                         ratingArray: await this.getRatingArray(1, (point.id) ? point.id : -1)
                     });
 
@@ -72,19 +90,33 @@ export default class {
                         start_long: point.start_long,
                         end_lat: point.end_lat,
                         end_long: point.end_long,
+                        images: await Promise.all(point.images.map(async (image) => (image.includes('blob')) ? (await new Promise(async (resolve) => await fetch(image).then((result) => result.blob().then((result) => {
+                            var reader = new FileReader();
+                            reader.onload = function () {
+                                var dataUrl = reader.result;
+                                var base64 = dataUrl.split(',')[1];
+                                resolve(base64);
+                            };
+                            reader.readAsDataURL(result);
+                        })))) : (image))),
                         ratingArray: await this.getRatingArray(1, (point.id) ? point.id : -1)
                     });
             }
-        });
+        }
 
         return new Promise(async (resolve) => {
             await axios.get(CONSTANTS.SERVER_ADDRESS + CONSTANTS.PAGES.ADMIN.CREATE_BECKUP_TABLES).then(async (result) => {
                 if (result)
                     await axios.get(CONSTANTS.SERVER_ADDRESS + CONSTANTS.PAGES.ADMIN.DELETE_TABLES).then(async (result) => {
                         if (result)
-                            await axios.post(CONSTANTS.SERVER_ADDRESS + CONSTANTS.PAGES.ADMIN.SET_DATA_TO_TABLES, points).then(async (result) =>
-                                resolve(result)
-                            )
+                            await axios.post(CONSTANTS.SERVER_ADDRESS + CONSTANTS.PAGES.ADMIN.SET_DATA_TO_TABLES, points).then(async (result) => {
+                                if (result)
+                                    await axios.post(CONSTANTS.SERVER_ADDRESS + CONSTANTS.PAGES.ADMIN.MOVE_FILES_FROM_FOLDER).then(async (result) =>
+                                        resolve(result)
+                                    )
+                                else
+                                    resolve(result)
+                            })
                         else
                             resolve(result)
                     })
